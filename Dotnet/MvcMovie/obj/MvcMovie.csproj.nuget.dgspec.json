@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\dorku\\Documents\\STUDIA\\SEMESTR III\\WZORZEC MVC\\MVC\\MVC\\Dotnet\\MvcMovie\\MvcMovie.csproj": {}
+    "C:\\Users\\dorku\\Documents\\STUDIA\\SEMESTR III\\WZORZEC MVC\\MVC\\MVC\\Dotnet\\MvcMovie\\MvcMovie.csproj": {}
   },
   "projects": {
-    "c:\\Users\\dorku\\Documents\\STUDIA\\SEMESTR III\\WZORZEC MVC\\MVC\\MVC\\Dotnet\\MvcMovie\\MvcMovie.csproj": {
+    "C:\\Users\\dorku\\Documents\\STUDIA\\SEMESTR III\\WZORZEC MVC\\MVC\\MVC\\Dotnet\\MvcMovie\\MvcMovie.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\dorku\\Documents\\STUDIA\\SEMESTR III\\WZORZEC MVC\\MVC\\MVC\\Dotnet\\MvcMovie\\MvcMovie.csproj",
+        "projectUniqueName": "C:\\Users\\dorku\\Documents\\STUDIA\\SEMESTR III\\WZORZEC MVC\\MVC\\MVC\\Dotnet\\MvcMovie\\MvcMovie.csproj",
         "projectName": "MvcMovie",
-        "projectPath": "c:\\Users\\dorku\\Documents\\STUDIA\\SEMESTR III\\WZORZEC MVC\\MVC\\MVC\\Dotnet\\MvcMovie\\MvcMovie.csproj",
+        "projectPath": "C:\\Users\\dorku\\Documents\\STUDIA\\SEMESTR III\\WZORZEC MVC\\MVC\\MVC\\Dotnet\\MvcMovie\\MvcMovie.csproj",
         "packagesPath": "C:\\Users\\dorku\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\dorku\\Documents\\STUDIA\\SEMESTR III\\WZORZEC MVC\\MVC\\MVC\\Dotnet\\MvcMovie\\obj\\",
+        "outputPath": "C:\\Users\\dorku\\Documents\\STUDIA\\SEMESTR III\\WZORZEC MVC\\MVC\\MVC\\Dotnet\\MvcMovie\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\VS_Shared\\NuGetPackages"
