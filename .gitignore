@@ -221,3 +221,4 @@ obj/
 .vscode/
 .history/
 *.code-workspace
+*.user
