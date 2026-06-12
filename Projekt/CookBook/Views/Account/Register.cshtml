@@ -1,0 +1,34 @@
+@model CookBook.Models.User
+
+<form action="/Account/Register" method="post">
+<div class="form-group">
+    <label asp-for="UserName">Podaj nazwę użytkownika:</label>
+    <input asp-for="UserName" type="text" placeholder="Nazwa użytkownika"/>
+</div>
+<div class="form-group">
+    <label asp-for="Password">Podaj hasło:</label>
+    <input asp-for="Password" type="password" placeholder="Hasło"/>
+</div>
+<div class="form-group">
+    <label asp-for="Email">Podaj adres e-mail:</label>
+    <input asp-for="Email" type="text" placeholder="Adres e-mail"/>
+</div>
+<div class="form-group">
+    <label asp-for="Email">Powtórz adres e-mail:</label>
+    <input asp-for="Email" type="text" placeholder="Adres e-mail"/>
+</div>
+<div class="form-group">
+    <label asp-for="Name">Podaj swoje imię:</label>
+    <input asp-for="Name" type="text" placeholder="Imię"/>
+</div>
+<div class="form-group">
+    <label asp-for="Surname">Podaj swoje nazwisko:</label>
+    <input asp-for="Surname" type="text" placeholder="Nazwisko"/>
+</div>
+<div class="form-group">
+    <label asp-for="Birthday">Podaj swoją datę urodzenia:</label>
+    <input asp-for="Birthday" type="date" />
+</div>
+<button type="submit">Zarejestruj się</button>
+<div asp-validation-summary="All"></div>
+</form>
