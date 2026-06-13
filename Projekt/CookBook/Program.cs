@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using CookBook.Data;
 using Microsoft.EntityFrameworkCore;
+using CookBook.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +28,10 @@ builder.Services.AddAuthorization(options =>
 builder.Services.AddDbContext<CookBookContext> (options => options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
+
+using var scope = app.Services.CreateScope();
+var context = scope.ServiceProvider.GetRequiredService<CookBookContext>();
+SeedData.Initialize(context);
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
