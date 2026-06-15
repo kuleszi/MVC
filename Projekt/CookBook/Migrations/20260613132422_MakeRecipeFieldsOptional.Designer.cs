@@ -3,6 +3,7 @@ using System;
 using CookBook.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CookBook.Migrations
 {
     [DbContext(typeof(CookBookContext))]
-    partial class CookBookContextModelSnapshot : ModelSnapshot
+    [Migration("20260613132422_MakeRecipeFieldsOptional")]
+    partial class MakeRecipeFieldsOptional
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.0");
@@ -71,14 +74,11 @@ namespace CookBook.Migrations
                     b.Property<int>("CookTime")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("Kcal")
+                    b.Property<int>("Kcal")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
@@ -86,12 +86,6 @@ namespace CookBook.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Photo")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Portion")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Source")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("UserId")
@@ -138,10 +132,6 @@ namespace CookBook.Migrations
                     b.Property<DateOnly>("Birthday")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("ConfirmEmail")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -152,7 +142,6 @@ namespace CookBook.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Surname")

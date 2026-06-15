@@ -1,0 +1,10 @@
+@model IEnumerable<CookBook.Models.Recipe>
+
+    <h1>Lista wszystkich przepisów z kategorii...</h1>
+
+    <ul>
+        @foreach (var recipe in Model) {
+        <li>@recipe.Name</li>
+    }</ul>
+
+    

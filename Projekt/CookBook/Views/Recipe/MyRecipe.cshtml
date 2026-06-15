@@ -1,0 +1,26 @@
+@model IEnumerable<CookBook.Models.Recipe>
+
+    <h1>Moje przepisy</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nazwa przepisu</th>
+                <th>Kategoria</th>
+                <th>Data dodania</th>
+                <th>Edytuj</th>
+                <th>Usuń</th>
+            </tr>    
+        </thead>
+        <tbody>
+            
+             @foreach(var recipe in Model){
+                <tr>
+                    <td>@recipe.Name</td>
+                    <td>@recipe.Category</td>
+                    <td><time datetime="@recipe.CreatedAt.ToString("yyyy-MM-dd")">@recipe.CreatedAt.ToString("dd.MM.yyyy")</time></td>
+                    <td><a asp-route-id="@recipe.Id" asp-controller="Recipe" asp-action="Edit" class="btn">Edytuj</a></td>
+                    <td><a asp-route-id="@recipe.Id" asp-controller="Recipe" asp-action="Delete" class="btn">Usuń</a></td>
+                </tr>}
+        </tbody>
+    </table>
+    <a asp-controller="Recipe" asp-action="Create" class="btn">Dodaj nowy przepis</a>
