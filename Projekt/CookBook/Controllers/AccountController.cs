@@ -84,9 +84,14 @@ public async Task<IActionResult> Login(string username, string password, string?
     [HttpPost]
     public async Task<IActionResult> Register(User user)
     {
-       _context.Users.Add(user);
+            if (ModelState.IsValid)
+            {
+                _context.Users.Add(user);
        await _context.SaveChangesAsync();
        return RedirectToAction("Login");
+            }
+       
+       return View(user);
     }
 }
 

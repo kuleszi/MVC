@@ -1,0 +1,101 @@
+@model CookBook.Models.Recipe
+@section Scripts {
+    <script src="~/js/create.js"></script>
+}
+
+<form action="/Recipe/Create" method="post">
+    <div class="form-group">
+        <label asp-for="Name">Podaj nazwę przepisu:</label>
+        <input class="form-control" asp-for="Name" type="text" placeholder="Nazwa przepisu" />
+        <span asp-validation-for="Name" class="text-danger" ></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description">Dodaj opis do przepisu:</label>
+        <input class="form-control" asp-for="Description" type="text" placeholder="Opis..." />
+        <span asp-validation-for="Description" class="text-danger" ></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CookTime">Podaj czas gotowania w minutach:</label>
+        <input class="form-control" asp-for="CookTime" type="number" placeholder="...m" />
+        <span asp-validation-for="CookTime" class="text-danger" ></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Kcal">Podaj ilość kalorii</label>
+        <input class="form-control" asp-for="Kcal" type="number" placeholder="...kcal" />
+    </div>
+     <div class="form-group">
+        <label asp-for="Portion">Podaj liczbę porcji:</label>
+        <input class="form-control" asp-for="Portion" type="number" placeholder="Liczba porcji" />
+        <span asp-validation-for="Portion" class="text-danger" ></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Photo">Dodaj zdjęcie przepisu:</label>
+        <input class="form-control" asp-for="Photo" type="file" placeholder="Wybierz z dysku" />
+    </div>
+    <div class="form-group">
+        <label asp-for="CategoryId">Wybierz kategorię:</label>
+        <select class="form-control" asp-for="CategoryId"> @foreach(var category in ViewBag.Categories){
+            <option value="@category.Id">@category.Name</option>
+        }
+    </select>
+    <span asp-validation-for="CategoryId" class="text-danger" ></span>
+</div>
+<div class="form-group">
+    <label asp-for="Ingredients">Dodaj składniki:</label>
+    <div id="Ingredients">
+        <div class="row">
+            <div class="col-6">
+                <input name="Ingredients[0].Name" type="text" />
+                <span asp-validation-for="Ingredients[0].Name" class="text-danger" ></span>
+
+            </div>
+            <div class="col-3">
+                <input name="Ingredients[0].Amount" type="number" />
+                <span asp-validation-for="Ingredients[0].Amount" class="text-danger" ></span>
+            </div>
+            <div class="col-3">
+                <select name="Ingredients[0].Measurment">
+                    <option>g</option>
+                    <option>dag</option>
+                    <option>kg</option>
+                    <option>ml</option>
+                    <option>l</option>
+                    <option>szklanka</option>
+                    <option>łyżka</option>
+                    <option>łyżeczka</option>
+                    <option>szczypta</option>
+                    <option>sztuka</option>
+                    <option>do smaku</option>
+                </select>
+                <span asp-validation-for="Ingredients[0].Measurment" class="text-danger" ></span>
+
+            </div>
+        </div>
+    </div>
+    <button type="button" id="IngredientsBtn">Dodaj kolejny składnik</button>
+</div>
+<div class="form-group">
+    <label asp-for="Ingredients">Dodaj składniki:</label>
+    <div id="Steps">
+        <div class="row">
+            <div class="col-3">
+                <label asp-for="Steps[0].StepNumber">Numer kroku:</label>
+                <input name="Steps[0].StepNumber" type="number" />
+                <span asp-validation-for="Steps[0].StepNumber" class="text-danger" ></span>
+            </div>
+            <div class="col-9">
+                <label asp-for="Steps[0].StepDescription">Opis kroku:</label>
+                <input name="Steps[0].StepDescription" type="text" />
+                <span asp-validation-for="Steps[0].StepDescription" class="text-danger" ></span>
+            </div>
+        </div>
+    </div>
+    <button type="button" id="StepsBtn">Dodaj kolejny krok</button>
+</div>
+<div class="form-group">
+        <label asp-for="Source">Jeśli przepis nie jest Twój, podaj jego źródo:</label>
+        <input class="form-control" asp-for="Source" type="text" placeholder="Źródło" />
+</div>
+<button type="submit">Zapisz</button>
+</form>
+    
