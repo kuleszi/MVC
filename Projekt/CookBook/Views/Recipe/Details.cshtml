@@ -1,0 +1,87 @@
+@model CookBook.Models.Recipe
+@{
+    ViewData["Title"] = ViewBag.RecipeName ?? "Przepis";
+
+}
+<div class="recipe-page-container">
+    <h1 class="recipe-title">@ViewData["Title"]</h1>
+
+    <div class="recipes-list">
+        <div class="recipe-image-container">
+            <a asp-controller="Recipe" asp-action="Details" asp-route-id="@Model.Id">
+                <img src="@Model.Photo" alt="@Model.Name" class="recipe-main-image" />
+            </a>
+        </div>
+
+        <div class="recipe-title-container">
+            <h1 class="recipe-title">@Model.Name</h1>
+        </div>
+
+        <div class="recipe-stats-row">
+            <div class="stat-item">
+                <span class="icon-clock">⌚</span>
+                <span class="stat-text">@Model.CookTime</span> m
+            </div>
+            <div class="stat-item">
+                <span class="icon-kcal">🔥</span>
+                <span class="stat-text">@Model.Kcal</span> kcal
+            </div>
+            <div class="stat-item">
+                <span class="icon-portion">🍽️</span>
+                <span class="stat-text">@Model.Portion</span> liczba porcji
+            </div>
+        </div>
+    </div>
+
+    <div class="recipe-description-full">
+        <p class="description-text">@Model.Description</p>
+    </div>
+
+    <div class="recipe-instructions-section">
+
+        <div class="ingredients-column">
+            <h2>Lista zakupów:</h2>
+            <ul class="ingredients-list" id="ingredientsList">
+                @if (Model.Ingredients != null)
+                {
+                    for (int i = 0; i < Model.Ingredients.Count; i++)
+                    {
+                        <li class="ingredient-row">
+                            <input type="hidden" asp-for="Ingredients[i].Id" />
+
+                            <div class="ingredient-data">
+                                <span class="ingredient-name">- @Model.Ingredients[i].Name</span>
+                                <div class="ingredient-amount-measure">
+                                    <span class="ingredient-amount">@Model.Ingredients[i].Amount</span>
+                                    <span class="ingredient-measure">@Model.Ingredients[i].Measurement</span>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+
+        <div class="steps-column">
+            <h2>Sposób przygotowania</h2>
+            <ol class="steps-list" id="stepsList">
+                @if (Model.Steps != null)
+                {
+                    for (int i = 0; i < Model.Steps.Count; i++)
+                    {
+                        <li class="step-item">
+                            <input type="hidden" asp-for="Steps[i].Id" />
+
+                            <div class="step-data">
+                                <span class="step-desc">@Model.Steps[i].StepDescription</span>
+                            </div>
+                        </li>
+                    }
+                }
+            </ol>
+
+        </div>
+    </div>
+
+    <button type="button" class="ReturnToCategoryBtn">Wróć do @Model.Category.Name</button>
+</div>

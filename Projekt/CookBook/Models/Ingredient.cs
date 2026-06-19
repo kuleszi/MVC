@@ -10,7 +10,7 @@ public class Ingredient
     [Required(ErrorMessage = "To pole nie może być puste")]
     public required double Amount {get; set;}
     [Required(ErrorMessage = "To pole nie może być puste")]
-    public required string Measurment {get; set;}
+    public required string Measurement {get; set;}
     public required int RecipeId {get; set;}
-    public Recipe Recipe {get; set;}
+    public Recipe? Recipe {get; set;}
 }

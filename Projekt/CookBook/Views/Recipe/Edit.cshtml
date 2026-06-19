@@ -1,0 +1,152 @@
+@model CookBook.Models.Recipe
+@section Scripts {
+    <script src="~/js/edit.js"></script>
+}
+@{
+    ViewData["Title"] = "Edytuj przepis: " + Model.Name;
+}
+
+<div asp-validation-summary="All" class="text-danger"></div>
+<div class="edit-top-actions">
+    <button type="submit" form="editRecipeForm" class="btn btn-save">Zapisz zmiany</button>
+
+    <form asp-controller="Recipe" asp-action="Delete" asp-route-id="@Model.Id" method="post" class="d-inline">
+        <button type="button" id="deleteEditBtn" class="btn btn-danger" data-id="@Model.Id">Usuń przepis</button>
+    </form>
+</div>
+
+<form id="editRecipeForm" asp-controller="Recipe" asp-action="Edit" method="post" enctype="multipart/form-data"
+      class="recipe-details-container edit-mode">
+
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="UserId" />
+
+    <div class="recipe-header-section">
+        <div class="recipe-main-image-container editable-image-wrapper">
+            <button type="button" class="btn-remove-image" title="Usuń zdjęcie">❌</button>
+            <img src="@Model.Photo" alt="@Model.Name" class="recipe-main-image" />
+            <div class="edit-icon-overlay">✏️ zmień zdjęcie</div>
+            <input type="file" name="NewPhoto" class="d-none" accept="image/*" />
+        </div>
+
+        <div class="recipe-title-container">
+            <div class="editable-field">
+                <h1 class="recipe-title edit-text">@Model.Name</h1>
+                <input asp-for="Name" class="edit-input d-none" />
+                <span class="edit-icon">✏️</span>
+            </div>
+
+            <div class="recipe-stats-row">
+                <div class="stat-item editable-field">
+                    <span class="icon-clock">⌚</span>
+                    <span class="stat-text" edit-text>@Model.CookTime</span> m
+                    <input asp-for="CookTime" class="edit-input d-none" />
+                    <span class="edit-icon">✏️</span>
+                </div>
+                <div class="stat-item editable-field">
+                    <span class="icon-kcal">🔥</span>
+                    <span class="stat-text" edit-text>@Model.Kcal</span> kcal
+                    <input asp-for="Kcal" class="edit-input d-none" />
+                    <span class="edit-icon">✏️</span>
+                </div>
+                <div class="stat-item editable-field">
+                    <span class="icon-portion">🍽️</span>
+                    <span class="stat-text">@Model.Portion</span> liczba porcji
+                    <input asp-for="Portion" class="edit-input d-none" />
+                    <span class="edit-icon">✏️</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="recipe-description-full editable-field">
+        <p class="description-text edit-text">@Model.Description</p>
+        <textarea asp-for="Description" class="edit-input d-none"></textarea>
+        <span class="edit-icon">✏️</span>
+    </div>
+
+    <div class="recipe-instructions-section">
+
+        <div class="ingredients-column">
+            <h2>Lista zakupów:</h2>
+            <ul class="ingredients-list" id="ingredientsList">
+                @if (Model.Ingredients != null)
+                {
+                    for (int i = 0; i < Model.Ingredients.Count; i++)
+                    {
+                        <li class="ingredient-row editable-row">
+                            <input type="hidden" asp-for="Ingredients[i].Id" />
+
+                            <div class="ingredient-data editable-field">
+                                <span class="ingredient-name edit-text">- @Model.Ingredients[i].Name</span>
+                                <input asp-for="Ingredients[i].Name" class="edit-input d-none" />
+                            </div>
+
+                            <div class="ingredient-amount-measure editable-field">
+                                <span class="ingredient-amount edit-text">@Model.Ingredients[i].Amount</span>
+                                <input asp-for="Ingredients[i].Amount" class="edit-input d-none" />
+
+                                <span class="ingredient-measure edit-text">@Model.Ingredients[i].Measurement</span>
+                                <select asp-for="Ingredients[i].Measurement" class="edit-input d-none">
+                                    <option value="g">g</option>
+                                    <option value="dag">dag</option>
+                                    <option value="kg">kg</option>
+                                    <option value="ml">ml</option>
+                                    <option value="l">l</option>
+                                    <option value="szklanka">szklanka</option>
+                                    <option value="łyżka">łyżka</option>
+                                    <option value="łyżeczka">łyżeczka</option>
+                                    <option value="szczypta">szczypta</option>
+                                    <option value="sztuka">sztuka</option>
+                                    <option value="do smaku">do smaku</option>
+                                </select>
+                            </div>
+
+                            <div class="row-actions">
+                                <span class="edit-icon">✏️</span>
+                                <span class="delete-icon">❌</span>
+                                <span class="addIconsIn-icon">➕</span>
+                            </div>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+
+        <div class="steps-column">
+            <h2>Sposób przygotowania</h2>
+            <ol class="steps-list" id="stepsList">
+                @if (Model.Steps != null)
+                {
+                    for (int i = 0; i < Model.Steps.Count; i++)
+                    {
+                        <li class="step-item editable-row">
+                            <input type="hidden" asp-for="Steps[i].Id" />
+
+                            <div class="step-data editable-field">
+                                <span class="step-desc edit-text">@Model.Steps[i].StepDescription</span>
+                                <textarea asp-for="Steps[i].StepDescription" class="edit-input d-none"></textarea>
+                            </div>
+
+                            <div class="row-actions">
+                                <span class="edit-icon">✏️</span>
+                                <span class="delete-icon">❌</span>
+                                <span class="addIconsSt-icon">➕</span>
+                            </div>
+                        </li>
+                    }
+                }
+            </ol>
+        </div>
+
+        <div class="category-select">
+            <label asp-for="CategoryId">Wybierz kategorię:</label>
+            <select class="form-control" asp-for="CategoryId"> @foreach(var category in ViewBag.Categories){
+                <option value="@category.Id">@category.Name</option>
+            }
+        </select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+
+</div>
+</form>

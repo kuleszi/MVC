@@ -8,5 +8,5 @@ public class Step
     [Required(ErrorMessage = "To pole nie może być puste")]
     public required string StepDescription {get; set;}
     public int RecipeId {get; set;}
-    public Recipe Recipe {get; set;} = default!;
+    public Recipe? Recipe {get; set;}
 }
