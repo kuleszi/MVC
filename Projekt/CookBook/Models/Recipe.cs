@@ -17,10 +17,10 @@ public class Recipe
     public string? Photo {get; set;}
     public DateTime CreatedAt {get; set;} = DateTime.Now;
     public int CategoryId {get; set;}
-    public Category Category {get; set;}
+    public Category? Category {get; set;}
     public List<Ingredient>? Ingredients {get; set;} = new();
     public List<Step>? Steps {get; set;} = new();
     public string? Source {get; set;}
     public int UserId {get; set;}
-    public User User {get; set;}
+    public User? User {get; set;}
 }

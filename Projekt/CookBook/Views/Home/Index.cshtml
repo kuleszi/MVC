@@ -1,8 +1,25 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Strona główna";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="home-container">
+    <section class="hero-banner">
+        <h1>Otwórz naszą książkę kucharską</h1>
+        <a asp-controller="Recipe" asp-action="Index" class="btn btn-cta">Zobacz wszystkie przepisy</a>
+    </section>
+
+    <section class="categories-section">
+        <p class="categories-subtitle">Wybierz kategorie przepisów, którą chcesz się zainspirować</p>
+        <div class="categories-buttons">
+            <a asp-controller="Category" asp-action="Details" asp-route-name="Śniadania" class="btn btn-category">Śniadania</a>
+            <a asp-controller="Category" asp-action="Details" asp-route-name="Obiady" class="btn btn-category">Obiady</a>
+            <a asp-controller="Category" asp-action="Details" asp-route-name="Kolacje" class="btn btn-category">Kolacje</a>
+            <a asp-controller="Category" asp-action="Details" asp-route-name="Desery" class="btn btn-category">Desery</a>
+        </div>
+    </section>
+
+    <section class="register-prompt">
+        <p>Chcesz dzielić się z innymi swoimi przepisami?</p>
+        <a asp-controller="Account" asp-action="Register" class="btn btn-register">Zarejestruj się</a>
+    </section>
 </div>

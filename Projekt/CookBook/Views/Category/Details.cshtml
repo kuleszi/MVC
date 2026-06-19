@@ -1,0 +1,81 @@
+@model IEnumerable<CookBook.Models.Recipe>
+@{
+    ViewData["Title"] = ViewBag.CategoryName ?? "Kategoria";
+    int index = 0;
+}
+
+<div class="category-page-container">
+    <h1 class="category-title">@ViewData["Title"]</h1>
+
+    <div class="recipes-list">
+        @foreach (var recipe in Model)
+        {
+            bool isEven = index % 2 != 0; 
+            string rowClass = isEven ? "recipe-row-even" : "recipe-row-odd";
+
+            <div class="recipe-row @rowClass">
+                
+                @if (!isEven)
+                {
+                    <div class="recipe-image-container">
+                        <a asp-controller="Recipe" asp-action="Details" asp-route-id="@recipe.Id">
+                            <img src="@recipe.Photo" alt="@recipe.Name" class="recipe-image" />
+                        </a>
+                    </div>
+                    
+                    <div class="recipe-info-container">
+                        <a asp-controller="Recipe" asp-action="Details" asp-route-id="@recipe.Id" class="recipe-title-link">
+                            <h2 class="recipe-name">@recipe.Name</h2>
+                        </a>
+                        <div class="recipe-description">
+                            @recipe.Description
+                        </div>
+                    </div>
+                    
+                    <div class="recipe-stats-container">
+                        <div class="stat-item">
+                            <span class="icon-clock">⌚</span> @recipe.CookTime m
+                        </div>
+                        <div class="stat-item">
+                            <span class="icon-kcal">🔥</span> @recipe.Kcal kcal
+                        </div>
+                        <div class="stat-item">
+                            <span class="icon-portion">🍽️</span> @recipe.Portion liczba porcji
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="recipe-stats-container">
+                        <div class="stat-item">
+                            <span class="icon-clock">⌚</span> @recipe.CookTime m
+                        </div>
+                        <div class="stat-item">
+                            <span class="icon-kcal">🔥</span> @recipe.Kcal kcal
+                        </div>
+                        <div class="stat-item">
+                            <span class="icon-portion">🍽️</span> @recipe.Portion liczba porcji
+                        </div>
+                    </div>
+                    
+                    <div class="recipe-info-container">
+                        <a asp-controller="Recipe" asp-action="Details" asp-route-id="@recipe.Id" class="recipe-title-link">
+                            <h2 class="recipe-name">@recipe.Name</h2>
+                        </a>
+                        <div class="recipe-description">
+                            @recipe.Description
+                        </div>
+                    </div>
+                    
+                    <div class="recipe-image-container">
+                        <a asp-controller="Recipe" asp-action="Details" asp-route-id="@recipe.Id">
+                            <img src="@recipe.Photo" alt="@recipe.Name" class="recipe-image" />
+                        </a>
+                    </div>
+                }
+            </div>
+            
+            index++;
+        }
+    </div>
+</div>
