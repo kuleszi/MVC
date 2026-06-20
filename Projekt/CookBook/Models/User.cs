@@ -16,10 +16,9 @@ public class User
     [Required(ErrorMessage = "To pole nie może być puste")]
     public required string Surname {get; set;}
     [Required(ErrorMessage = "To pole nie może być puste")]
-    public required DateOnly Birthday {get; set;}
+    public required DateOnly? Birthday {get; set;}
     [Required(ErrorMessage = "To pole nie może być puste")]
     [EmailAddress(ErrorMessage ="Niepoprawny format adresu e-mail")]
-
     public required string Email {get; set;}
     [Required(ErrorMessage = "To pole nie może być puste")]
     [Compare("Email", ErrorMessage ="Adresy e-mail muszą być takie same")]

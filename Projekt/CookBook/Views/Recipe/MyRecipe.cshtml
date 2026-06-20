@@ -28,12 +28,12 @@
         {
             <tr>
                 <td>@recipe.Name</td>
-                <td>@recipe.Category</td>
+                <td>@recipe.Category?.Name</td>
                 <td><time
                     datetime="@recipe.CreatedAt.ToString("yyyy-MM-dd")">@recipe.CreatedAt.ToString("dd.MM.yyyy")</time>
                 </td>
-                <td><a asp-route-id="@recipe.Id" asp-controller="Recipe" asp-action="Edit" class="EditBtn">Edytuj</a></td>
-                <td><button class="btn btn-danger delete-trigger" data-id="@recipe.Id">Usuń</button></td>
+                <td><a asp-route-id="@recipe.Id" asp-controller="Recipe" asp-action="Edit" class="EditBtn btn btn-outline-warning" type="button">Edytuj</a></td>
+                <td><button class="btn btn-danger btn-outline-danger delete-trigger" data-id="@recipe.Id">Usuń</button></td>
             </tr>
         }
     </tbody>

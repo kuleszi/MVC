@@ -1,6 +1,20 @@
-<form action="/Account/Login" method="post">
-<input name="username" />
-<input name="password" type="password" />
-<button type="submit">Zaloguj się</button>
-<div asp-validation-summary="All"></div>    
-</form>
+@model CookBook.Models.User
+<div class="card">
+    <div class="card-body">
+        <div class="col-md-4 mx-auto mt-5">
+            <form action="/Account/Login" method="post">
+                <div class="mb-3"><label class="form-label" asp-for="UserName">Podaj nazwę użytkownika:</label>
+                    <input class="form-control" asp-for="UserName" type="text" placeholder="Nazwa użytkownika" />
+                    <span asp-validation-for="UserName" class="invalid-feedback d-block"></span>
+                </div>
+                <div class="mb-3"><label class="form-label" asp-for="Password">Podaj hasło:</label>
+                    <input class="form-control" asp-for="Password" type="password" placeholder="Hasło" />
+                    <span asp-validation-for="Password" class="invalid-feedback d-block"></span>
+                </div>
+
+                <div class="text-center mt-4"> <button class="btn btn-success type=" submit">Zaloguj się</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
