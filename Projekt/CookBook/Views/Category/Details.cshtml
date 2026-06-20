@@ -2,8 +2,6 @@
 
 @{
 
-
-
     ViewData["Title"] = ViewBag.CategoryName ?? "Kategoria";
 
     int index = 0;
@@ -12,16 +10,12 @@
 
 
 
-<div class="category-page-container container">
+<div class="container" style="width: 60vw; margin: 0 auto;">
 
     <h1 class="text-center mb-5 mt-4" ">@ViewData["Title"]</h1>
 
-    <div class=" pt-4 pb-5 bg-light max-auto"
-         style="min-height: 80vh; max-width: 65%; !important; margin: 0 auto !important;">
-
-
-
-        <div class="recipes-list container mt-4">
+    <div class=" m-0 bg-light max-auto">
+        <div class="recipes-list mt-4">
 
             @foreach (var recipe in Model)
 
@@ -33,21 +27,12 @@
 
                 string imageOrder = isEven ? "order-md-2" : "order-md-1";
 
-
-
-                <div class="row align-items-stretch mb-5 p-0 bg-light rounded overflow-hidden">
-
-
-
-                    <div class="col-md-6 @textOrder d-flex flex-column justify-content-center p-5">
-                        <div class="recipe-info-container mb-4">
-
+                <div class="row align-items-center p-0 g-0 bg-light overflow-hidden">
+                    <div class="col-md-6 @textOrder d-flex flex-column justify-content-center align-items-center">
+                        <div class="recipe-info-container mb-4 justify-content-center w-100">
                             <a asp-controller="Recipe" asp-action="Details" asp-route-id="@recipe.Id"
-                               class="text-decoration-none">
-
-                                @* <div class="header-category bg-secondary card-body"
-                                     style="height: 15vh; width: 50vw; left: 41%; padding: 1%"> *@
-<div class="header-category bg-secondary card-body" style="margin-left: -1.7rem; padding-left: 3rem; padding-top: 1%; padding-bottom: 1%; padding-right: 1%; height: 15vh; width: 50vw; left: 41%;">
+                               class="text-decoration-none text-center">
+                                <div class="header-category bg-secondary" style="width: 100%">
                                     <h2 class="recipe-name mt-3">@recipe.Name</h2>
 
                                 </div>
@@ -55,9 +40,6 @@
                             </a>
 
                         </div>
-
-
-
                         <div class="d-flex flex-wrap gap-4 mb-4 text-primary-emphasis text-center">
 
                             <div class="stat-item"><span class="text-dark me-1">⌚</span> @recipe.CookTime m</div>
@@ -67,27 +49,16 @@
                             <div class="stat-item"><span class="text-dark me-1">🍽️</span> @recipe.Portion porcji</div>
 
                         </div>
-
-
-
-                        <div class="recipe-description text-dark p-4 rounded shadow-sm"
-                             style="background-color: #f4f6fa; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
-
-                            @recipe.Description
+                        <div class="recipe-description bg-secondary text-dark rounded shadow-lg p-2" style="width: 80%; ">
+                            <p style="display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden;">@recipe.Description</p>
 
                         </div>
-
-
-
                     </div>
-
-
-
                     <div class="col-md-6 @imageOrder p-0">
 
-                        <a asp-controller="Recipe" asp-action="Details" asp-route-id="@recipe.Id" class="d-block h-100">
+                        <a asp-controller="Recipe" asp-action="Details" asp-route-id="@recipe.Id" class="d-flex justify-content-end">
 
-                            <img src="/@recipe.Photo" alt="@recipe.Name" style="object-fit: cover; width:30vw;" />
+                            <img src="/@recipe.Photo" alt="@recipe.Name" style="min-height: 100%; width:100%; object-fit: cover;" />
 
                         </a>
 
