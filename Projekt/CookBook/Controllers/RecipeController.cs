@@ -23,8 +23,8 @@ public class RecipeController : Controller
 
     public IActionResult Index()
     {
-        var recipes = _context.Recipes.ToList();
-        return View(recipes);
+        var recipes = _context.Recipes.Include(r => r.Category).ToList();
+    return View(recipes);
     }
 
     [Authorize]
@@ -38,9 +38,7 @@ public class RecipeController : Controller
         }
 
         var currentUserId = int.Parse(userIdClaim);
-
-        var userRecipes = _context.Recipes.Where(r => r.UserId == currentUserId).ToList();
-
+        var userRecipes = _context.Recipes.Where(r => r.UserId == currentUserId).Include(r => r.Category).ToList();
         return View(userRecipes);
     }
     [HttpGet]

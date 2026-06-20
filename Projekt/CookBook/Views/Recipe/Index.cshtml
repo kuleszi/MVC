@@ -1,10 +1,170 @@
 @model IEnumerable<CookBook.Models.Recipe>
+@section Scripts {
+    <script src="~/js/index-recipe.js"></script>
+}
 
-    <h1>Lista wszystkich przepisów z kategorii...</h1>
+<div class="card bg-secondary mb-3" style="max-width: 100vw; min-height: 100vh;">
+    <div class="card-body mt-5">
+        <h1 class="text-primary-emphasis text-center">Lista wszystkich przepisów</h1>
+        <div class="bg-dark mx-auto rounded" style="width: 80px; height: 4px; margin-top: 15px; margin-bottom: 30px;">
+        </div>
+        <div class="row g-3 mt-5 bg-light">
+            <div class="col-md-3">
+                <div class="card bg-dark mb-3" style="max-width: 20rem;">
+                    <div class="card-body">
+                        <div class="accordion" id="accordionOne">
+                            <div class="accordion-item border-0 bg-transparent">
+                                <h4 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button collapsed bg-dark text-white shadow-none fs-4"
+                                            type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                            aria-expanded="false" aria-controls="collapseOne" style="
+                                        --bs-accordion-btn-icon: url(&quot;data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e&quot;);
+                                        --bs-accordion-btn-active-icon: url(&quot;data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e&quot;);
+                                        "><a class="text-decoration-none text-reset category-link"
+                                             asp-controller="Category" asp-action="Details"
+                                             asp-route-name="Śniadania">Śniadania</a>
+                                    </button>
+                                </h4>
+                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                     data-bs-parent="#accordionOne" style="">
+                                    <div class="accordion-body bg-dark text-white">
+                                        <ul>
+                                            @foreach (var recipe in Model)
+                                            {
+                                                @if (recipe.Category != null && recipe.Category.Name == "Śniadania")
+                                                {
+                                                   <li> <a class="text-decoration-none text-reset category-link"
+                                             asp-controller="Recipe" asp-action="Details"
+                                             asp-route-id="@recipe.Id">@recipe.Name</a>
+                                                    </li>
+                                                }
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-secondary mb-3" style="max-width: 20rem;">
+                    <div class="card-body">
+                        <div class="accordion" id="accordionTwo">
+                            <div class="accordion-item border-0 bg-transparent">
+                                <h4 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed bg-transparent shadow-none px-0 fs-4"
+                                            type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                            aria-expanded="false" aria-controls="collapseTwo">
+                                        <a class="text-decoration-none text-reset category-link"
+                                           asp-controller="Category" asp-action="Details"
+                                           asp-route-name="Obiady">Obiady</a>
+                                    </button>
+                                </h4>
+                                <div id="collapseTwo" class="accordion-collapse collapse"
+                                     aria-labelledby="headingObiady" data-bs-parent="#accordionTwo">
+                                    <div class="accordion-body px-0">
+                                        <ul>
+                                            @foreach (var recipe in Model)
+                                            {
+                                                @if (recipe.Category != null && recipe.Category.Name == "Kolacje")
+                                                {
+                                                   <li> <a class="text-decoration-none text-reset category-link"
+                                             asp-controller="Recipe" asp-action="Details"
+                                             asp-route-id="@recipe.Id">@recipe.Name</a>
+                                                    </li>
+                                                }
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-dark mb-3" style="max-width: 20rem;">
+                    <div class="card-body">
+                        <div class="accordion" id="accordionThree">
+                            <div class="accordion-item border-0 bg-transparent">
+                                <h4 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button collapsed bg-dark text-white shadow-none fs-4"
+                                            type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                            aria-expanded="false" aria-controls="collapseThree" style="
+                                        --bs-accordion-btn-icon: url(&quot;data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e&quot;);
+                                        --bs-accordion-btn-active-icon: url(&quot;data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e&quot;);
+                                        "><a class="text-decoration-none text-reset category-link"
+                                             asp-controller="Category" asp-action="Details"
+                                             asp-route-name="Kolacje">Kolacje</a>
+                                    </button>
+                                </h4>
+                                <div id="collapseThree" class="accordion-collapse collapse"
+                                     aria-labelledby="headingThree" data-bs-parent="#accordionThree" style="">
+                                    <div class="accordion-body bg-dark text-white">
 
-    <ul>
-        @foreach (var recipe in Model) {
-        <li>@recipe.Name</li>
-    }</ul>
+                                        <ul>
+                                            @foreach (var recipe in Model)
+                                            {
+                                                @if (recipe.Category != null && recipe.Category.Name == "Kolacje")
+                                                {
+                                                   <li> <a class="text-decoration-none text-reset category-link"
+                                             asp-controller="Recipe" asp-action="Details"
+                                             asp-route-id="@recipe.Id">@recipe.Name</a>
+                                                    </li>
+                                                }
+                                            }
+                                        </ul>
+
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-secondary mb-3" style="max-width: 20rem;">
+                    <div class="card-body">
+                        <div class="accordion" id="accordionFour">
+                            <div class="accordion-item border-0 bg-transparent">
+                                <h4 class="accordion-header" id="headingFour">
+                                    <button class="accordion-button collapsed bg-transparent shadow-none px-0 fs-4"
+                                            type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour"
+                                            aria-expanded="false" aria-controls="collapseFour">
+                                        <a class="text-decoration-none text-reset category-link"
+                                           asp-controller="Category" asp-action="Details"
+                                           asp-route-name="Desery">Desery</a>
+                                    </button>
+                                </h4>
+                                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                                     data-bs-parent="#accordionFour">
+                                    <div class="accordion-body px-0">
+                                        <ul>
+                                            @foreach (var recipe in Model)
+                                            {
+                                                @if (recipe.Category != null && recipe.Category.Name == "Desery")
+                                                {
+                                                   <li> <a class="text-decoration-none text-reset category-link"
+                                             asp-controller="Recipe" asp-action="Details"
+                                             asp-route-id="@recipe.Id">@recipe.Name</a>
+                                                    </li>
+                                                }
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+    
 
     

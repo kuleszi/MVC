@@ -1,81 +1,107 @@
 @model IEnumerable<CookBook.Models.Recipe>
+
 @{
+
+
+
     ViewData["Title"] = ViewBag.CategoryName ?? "Kategoria";
+
     int index = 0;
+
 }
 
-<div class="category-page-container">
-    <h1 class="category-title">@ViewData["Title"]</h1>
 
-    <div class="recipes-list">
-        @foreach (var recipe in Model)
-        {
-            bool isEven = index % 2 != 0; 
-            string rowClass = isEven ? "recipe-row-even" : "recipe-row-odd";
 
-            <div class="recipe-row @rowClass">
-                
-                @if (!isEven)
-                {
-                    <div class="recipe-image-container">
-                        <a asp-controller="Recipe" asp-action="Details" asp-route-id="@recipe.Id">
-                            <img src="@recipe.Photo" alt="@recipe.Name" class="recipe-image" />
-                        </a>
-                    </div>
-                    
-                    <div class="recipe-info-container">
-                        <a asp-controller="Recipe" asp-action="Details" asp-route-id="@recipe.Id" class="recipe-title-link">
-                            <h2 class="recipe-name">@recipe.Name</h2>
-                        </a>
-                        <div class="recipe-description">
+<div class="category-page-container container">
+
+    <h1 class="text-center mb-5 mt-4" ">@ViewData["Title"]</h1>
+
+    <div class=" pt-4 pb-5 bg-light max-auto"
+         style="min-height: 80vh; max-width: 65%; !important; margin: 0 auto !important;">
+
+
+
+        <div class="recipes-list container mt-4">
+
+            @foreach (var recipe in Model)
+
+            {
+
+                bool isEven = index % 2 != 0;
+
+                string textOrder = isEven ? "order-md-1" : "order-md-2";
+
+                string imageOrder = isEven ? "order-md-2" : "order-md-1";
+
+
+
+                <div class="row align-items-stretch mb-5 p-0 bg-light rounded overflow-hidden">
+
+
+
+                    <div class="col-md-6 @textOrder d-flex flex-column justify-content-center p-5">
+                        <div class="recipe-info-container mb-4">
+
+                            <a asp-controller="Recipe" asp-action="Details" asp-route-id="@recipe.Id"
+                               class="text-decoration-none">
+
+                                @* <div class="header-category bg-secondary card-body"
+                                     style="height: 15vh; width: 50vw; left: 41%; padding: 1%"> *@
+<div class="header-category bg-secondary card-body" style="margin-left: -1.7rem; padding-left: 3rem; padding-top: 1%; padding-bottom: 1%; padding-right: 1%; height: 15vh; width: 50vw; left: 41%;">
+                                    <h2 class="recipe-name mt-3">@recipe.Name</h2>
+
+                                </div>
+
+                            </a>
+
+                        </div>
+
+
+
+                        <div class="d-flex flex-wrap gap-4 mb-4 text-primary-emphasis text-center">
+
+                            <div class="stat-item"><span class="text-dark me-1">⌚</span> @recipe.CookTime m</div>
+
+                            <div class="stat-item"><span class="text-dark me-1">🔥</span> @recipe.Kcal kcal</div>
+
+                            <div class="stat-item"><span class="text-dark me-1">🍽️</span> @recipe.Portion porcji</div>
+
+                        </div>
+
+
+
+                        <div class="recipe-description text-dark p-4 rounded shadow-sm"
+                             style="background-color: #f4f6fa; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+
                             @recipe.Description
+
                         </div>
+
+
+
                     </div>
-                    
-                    <div class="recipe-stats-container">
-                        <div class="stat-item">
-                            <span class="icon-clock">⌚</span> @recipe.CookTime m
-                        </div>
-                        <div class="stat-item">
-                            <span class="icon-kcal">🔥</span> @recipe.Kcal kcal
-                        </div>
-                        <div class="stat-item">
-                            <span class="icon-portion">🍽️</span> @recipe.Portion liczba porcji
-                        </div>
-                    </div>
-                }
-                else
-                {
-                    <div class="recipe-stats-container">
-                        <div class="stat-item">
-                            <span class="icon-clock">⌚</span> @recipe.CookTime m
-                        </div>
-                        <div class="stat-item">
-                            <span class="icon-kcal">🔥</span> @recipe.Kcal kcal
-                        </div>
-                        <div class="stat-item">
-                            <span class="icon-portion">🍽️</span> @recipe.Portion liczba porcji
-                        </div>
-                    </div>
-                    
-                    <div class="recipe-info-container">
-                        <a asp-controller="Recipe" asp-action="Details" asp-route-id="@recipe.Id" class="recipe-title-link">
-                            <h2 class="recipe-name">@recipe.Name</h2>
+
+
+
+                    <div class="col-md-6 @imageOrder p-0">
+
+                        <a asp-controller="Recipe" asp-action="Details" asp-route-id="@recipe.Id" class="d-block h-100">
+
+                            <img src="/@recipe.Photo" alt="@recipe.Name" style="object-fit: cover; width:30vw;" />
+
                         </a>
-                        <div class="recipe-description">
-                            @recipe.Description
-                        </div>
+
                     </div>
-                    
-                    <div class="recipe-image-container">
-                        <a asp-controller="Recipe" asp-action="Details" asp-route-id="@recipe.Id">
-                            <img src="@recipe.Photo" alt="@recipe.Name" class="recipe-image" />
-                        </a>
-                    </div>
-                }
-            </div>
-            
-            index++;
-        }
+
+
+
+                </div>
+
+                index++;
+
+            }
+
+        </div>
+
     </div>
 </div>

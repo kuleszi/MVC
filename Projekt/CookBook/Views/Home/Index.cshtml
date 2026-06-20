@@ -3,23 +3,50 @@
 }
 
 <div class="home-container">
-    <section class="hero-banner">
-        <h1>Otwórz naszą książkę kucharską</h1>
-        <a asp-controller="Recipe" asp-action="Index" class="btn btn-cta">Zobacz wszystkie przepisy</a>
+    <section
+        class="hero-banner card p-3 mb-4 d-flex align-items-center justify-content-center mx-auto position-relative">
+        <img src="/images/baner.png" class="img-fluid rounded" style="max-height: 70vh; width: auto;" alt="home-page-baner" />
+        <a role="button" 
+        asp-controller="Recipe" 
+        asp-action="Index"
+        class="btn btn-primary btn-outline-light position-absolute d-flex align-items-center justify-content-center"
+        style="
+        top: 55%;
+        left: 41%;
+        transform-translate: (-50%, -50%);
+        width: 15%;
+        height: 15%;
+        padding: 1% 1%;
+            font-size: clamp(1px, 1.5vw, 18px);
+            "
+        >Zobacz wszystkie przepisy</a>
     </section>
 
-    <section class="categories-section">
-        <p class="categories-subtitle">Wybierz kategorie przepisów, którą chcesz się zainspirować</p>
-        <div class="categories-buttons">
-            <a asp-controller="Category" asp-action="Details" asp-route-name="Śniadania" class="btn btn-category">Śniadania</a>
-            <a asp-controller="Category" asp-action="Details" asp-route-name="Obiady" class="btn btn-category">Obiady</a>
-            <a asp-controller="Category" asp-action="Details" asp-route-name="Kolacje" class="btn btn-category">Kolacje</a>
-            <a asp-controller="Category" asp-action="Details" asp-route-name="Desery" class="btn btn-category">Desery</a>
+    <section class="categories-section text-center">
+        <div class="header-category bg-light card-body" style="height: 30vh; top: 55%;
+        left: 41%; padding: 1%">
+            <h4 class="categories-subtitle">Wybierz kategorie przepisów, którą chcesz się zainspirować</h4>
+            <div class="categories-buttons" style="padding: 1%;">
+            <a asp-controller="Category" asp-action="Details" asp-route-name="Śniadania"
+               type="button" class="btn btn-secondary btn-category">Śniadania</a>
+            <a asp-controller="Category" asp-action="Details" asp-route-name="Obiady"
+               type="button" class="btn btn-secondary btn-outline-dark btn-category">Obiady</a>
+            <a asp-controller="Category" asp-action="Details" asp-route-name="Kolacje"
+               type="button" class="btn btn-secondary btn-category">Kolacje</a>
+            <a asp-controller="Category" asp-action="Details" asp-route-name="Desery"
+               type="button" class="btn btn-secondary btn-outline-dark btn-category">Desery</a>
         </div>
+        </div>
+        
     </section>
 
-    <section class="register-prompt">
-        <p>Chcesz dzielić się z innymi swoimi przepisami?</p>
-        <a asp-controller="Account" asp-action="Register" class="btn btn-register">Zarejestruj się</a>
+    <section class="register-prompt text-center">
+        <div class="header-register bg-blue card-body" style="height: 20vh; top: 55%;
+        left: 41%; padding: 1%">
+            <h4 class= "register-subtitle">Chcesz dzielić się z innymi swoimi przepisami?</h4>
+            <div class="categories-buttons" style="padding: 1%;">
+            <a asp-controller="Account" asp-action="Register" class="btn btn-secondary btn-outline-dark btn-register">Zarejestruj się</a>
+            </div>
+        </div>
     </section>
 </div>

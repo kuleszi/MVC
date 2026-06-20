@@ -23,7 +23,7 @@ public class SeedData
 
         if(!context.Recipes.Any())
         {
-             context.Recipes.AddRange(new Recipe{Name="Jajka w humusie", Description="...", CategoryId = breakfest.Id, User= cook, CookTime=120, Portion=2}, new Recipe{Name="Placki z kalafiora", Description="...", CategoryId= lunch.Id, User= cook, CookTime=120, Portion=2}, new Recipe{Name="Pieczona dynia z fetą", Description="...", CategoryId= dinner.Id, User= cook, CookTime=120, Portion=2}, new Recipe{Name="Crumbl cookies", Description="...", CategoryId= dessert.Id, User= cook, CookTime=120, Portion=2});
+             context.Recipes.AddRange(new Recipe{Name="Jajka w humusie", Description="...", CategoryId = breakfest.Id, User= cook, CookTime=120, Portion=2, Photo = "images/jajka.png"}, new Recipe{Name="Placki z kalafiora", Description="...", CategoryId= lunch.Id, User= cook, CookTime=120, Portion=2}, new Recipe{Name="Pieczona dynia z fetą", Description="...", CategoryId= dinner.Id, User= cook, CookTime=120, Portion=2}, new Recipe{Name="Crumbl cookies", Description="...", CategoryId= dessert.Id, User= cook, CookTime=120, Portion=2});
 
              context.SaveChanges();
         }

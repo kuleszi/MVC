@@ -161,18 +161,16 @@ if (image) {
     }
   });
 
-  // 3. Obsługa przycisku usuwania zdjęcia (krzyżyka)
   if (removeBtn) {
     removeBtn.addEventListener("click", () => {
-      img.src = "/images/no-image.png"; // Tutaj wpisz ścieżkę do domyślnego placeholderu
-      fileInput.value = ""; // Czyści wybrany plik z inputa
+      img.src = "/images/no-image.png"; 
+      fileInput.value = "";
     });
   }
 }
 
 document.addEventListener("keydown", function(e) {
-  // Jeśli wciśnięto Enter i użytkownik znajduje się w jednowierszowym polu
   if (e.key === "Enter" && e.target.tagName === "INPUT") {
-    e.preventDefault(); // Blokuje domyślne wysłanie formularza
+    e.preventDefault();
   }
 });
