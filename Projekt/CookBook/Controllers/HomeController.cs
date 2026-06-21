@@ -21,15 +21,25 @@ public class HomeController : Controller
         return View();
     }
 
-    [Authorize(Policy="AllowAdmin")]   
+    [AllowAnonymous]   
     public IActionResult Privacy()
     {
         return View();
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
+    public IActionResult Error(int? statusCode = null)
     {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        var errorModel = new ErrorViewModel
+        {
+            RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,
+            StatusCode = statusCode
+        };
+
+        if(statusCode == 404) errorModel.Message = "Przykro nam! Strona, której szukasz nie istnieje. :(";
+        else if(statusCode == 403) errorModel.Message = "Przykro nam! Nie masz odpowiednich uprawnień by dostać się do tej strony";
+        else errorModel.Message = "Przykro nam! Wystąpił nieoczekiwany błąd po stronie serwera. Spróbuj ponownie później!";
+    
+        return View(errorModel);
     }
 }

@@ -41,6 +41,11 @@ namespace CookBook.Controllers
                 var claims = new List<Claim> {
                     new Claim(ClaimTypes.Name, username),
                     new Claim(ClaimTypes.NameIdentifier, userInDb.Id.ToString())};
+                if (userInDb.IsAdmin)
+                {
+                    claims.Add(new Claim(ClaimTypes.Role, "Admin"));
+                }
+
                 var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var principal = new ClaimsPrincipal(identity);
 

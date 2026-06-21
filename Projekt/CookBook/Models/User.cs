@@ -23,5 +23,9 @@ public class User
     [Required(ErrorMessage = "To pole nie może być puste")]
     [Compare("Email", ErrorMessage ="Adresy e-mail muszą być takie same")]
     public required string ConfirmEmail {get; set;}
+    [Required]
+    public bool IsAdmin {get; set;} = false;
     public List<Recipe>? MyRecipes {get; set;} = new();
+
+    
 }
