@@ -15,7 +15,7 @@ public class HomeController : Controller
         _logger = logger;
     }
 
-    [Authorize]
+    [AllowAnonymous]
     public IActionResult Index()
     {
         return View();

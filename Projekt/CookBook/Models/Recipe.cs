@@ -9,10 +9,8 @@ public class Recipe
     public required string Name {get; set;}
     [Required(ErrorMessage = "To pole nie może być puste")]
     public required string Description {get; set;}
-    [Required(ErrorMessage = "To pole nie może być puste")]
     public required int CookTime {get; set;}
     public int? Kcal {get; set;}
-    [Required(ErrorMessage = "To pole nie może być puste")]
     public required int Portion {get; set;}
     public string? Photo {get; set;}
     public DateTime CreatedAt {get; set;} = DateTime.Now;

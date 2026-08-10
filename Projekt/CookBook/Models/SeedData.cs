@@ -37,6 +37,7 @@ public class SeedData
             context.SaveChanges();
         }
 
+ 
         var breakfestOne = new Recipe
         {
             Name = "Jajka w humusie",
@@ -120,8 +121,12 @@ public class SeedData
             Photo = "images/red-velvet.png"
         };
 
+        if (!context.Recipes.Any())
+        {
         context.Recipes.AddRange(breakfestOne, lunchOne, dinnerOne, dessertOne, breakfestTwo, lunchTwo, dinnerTwo, dessertTwo);
         context.SaveChanges();
+        }
+        
 
         if (!context.Ingredients.Any())
         {
