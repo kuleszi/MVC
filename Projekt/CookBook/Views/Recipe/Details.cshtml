@@ -91,9 +91,14 @@
 
             <div class="row">
                 <div class="col-12 text-center mb-5">
-                    <button type="button" class="btn btn-secondary px-4 py-2">
+                    <a asp-controller="Category" asp-action="Details" asp-route-name="@Model.Category?.Name"
+                       class="btn btn-secondary px-4 py-2">
                         Wróć do @(Model.Category?.Name ?? "Kategorii")
-                    </button>
+                    </a>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edytuj jako Admin</a>
+                    }
                 </div>
             </div>
 
